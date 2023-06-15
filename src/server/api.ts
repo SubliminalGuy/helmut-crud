@@ -1,3 +1,4 @@
-import { remultExpress } from 'remult/remult-express';
+import { remultExpress } from "remult/remult-express";
+import { Project } from "../shared/Project";
 
-export const api = remultExpress();
+export const api = remultExpress({ entities: [Project] });

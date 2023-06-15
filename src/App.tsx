@@ -1,34 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { remult } from "remult";
+import { Project } from "./shared/Project";
 
-function App() {
-  const [count, setCount] = useState(0)
+const projectRepo = remult.repo(Project);
 
+export default function App() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [list, setList] = useState<string>("");
+
+  useEffect(() => {
+    projectRepo.find().then(setProjects);
+    projectRepo
+      .find()
+      .then((el) => el.reduce((acc, el) => (acc += el.projektName + ","), ""))
+      .then(setList);
+  }, []);
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <div>
+      <h1>Open Media Projects</h1>
+      <main>
+        <div className="project-names">
+          <p className="project-info">Cosmo Projekt Id</p>
+          <p className="project-info">Cosmo Projekt Name</p>
+          <p className="project-info">OM ID</p>
+          <p className="project-info">OM Name</p>
+          <p className="project-info">OM Redaktion</p>
+          <p className="project-info">OM Planungsdatum</p>
+        </div>
+        {projects.map((task) => {
+          let datum = "kein Datum";
+          if (task.openMediaPlanungsdatum) {
+            const dateObj = task.openMediaPlanungsdatum;
+            let month = dateObj.getUTCMonth() + 1;
+            let day = dateObj.getUTCDate();
+            let year = dateObj.getUTCFullYear();
 
-export default App
+            datum = day + "." + month + "." + year;
+          }
+
+          return (
+            <div className="project-element" key={task.projektId}>
+              <p className="project-info">{task.projektId}</p>
+              <p className="project-info">{task.projektName}</p>
+              <p className="project-info">{task.openMediaId}</p>
+              <p className="project-info">{task.openMediaThema}</p>
+              <p className="project-info">{task.openMediaRed}</p>
+              <p className="project-info">{datum}</p>
+            </div>
+          );
+        })}
+        <div className="list-container">
+          <p className="list-item">Liste der Projekte: {list}</p>
+        </div>
+      </main>
+    </div>
+  );
+}
