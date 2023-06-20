@@ -6,14 +6,9 @@ const projectRepo = remult.repo(Project);
 
 export default function App() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [list, setList] = useState<string>("");
 
   useEffect(() => {
     projectRepo.find().then(setProjects);
-    projectRepo
-      .find()
-      .then((el) => el.reduce((acc, el) => (acc += el.projektName + ","), ""))
-      .then(setList);
   }, []);
   return (
     <div>
@@ -50,7 +45,15 @@ export default function App() {
           );
         })}
         <div className="list-container">
-          <p className="list-item">Liste der Projekte: {list}</p>
+          <label className="pLabel">Projektauswahl:</label>
+
+          <select name="projekte" id="projekte">
+            {projects.map((task) => {
+              return (
+                <option value={task.projektName}>{task.projektName}</option>
+              );
+            })}
+          </select>
         </div>
       </main>
     </div>

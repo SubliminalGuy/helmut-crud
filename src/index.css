@@ -102,3 +102,8 @@ header {
 .project-info:first-child {
   width: 20%;
 }
+
+.pLabel {
+  font-size: 1.1rem;
+  margin-right: 2rem;
+}
