@@ -7,7 +7,7 @@ body {
   color: #f5f5f4;
   margin: 0;
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 h1 {
@@ -22,6 +22,9 @@ h1 {
 main {
   margin: auto;
   width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 input {
@@ -71,22 +74,6 @@ header {
   box-shadow: 0 2px 4px #0003, 0 25px 50px #0000001a;
 }
 
-.list-container {
-  margin-top: 1rem;
-
-  padding: 0.7rem;
-  background-color: #71717a;
-  display: flex;
-  border: 2px solid #18181b;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px #0003, 0 25px 50px #0000001a;
-}
-
-.list-item {
-  padding: 0.7rem;
-  font-size: 1.2rem;
-}
-
 .project-names {
   padding: 0.7rem;
   display: flex;
@@ -96,14 +83,83 @@ header {
 
 .project-info {
   padding: 0.7rem;
-  width: 16%;
+  flex-basis: 10px;
+  flex-shrink: 3;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .project-info:first-child {
-  width: 20%;
+  flex-basis: 180px;
 }
 
 .pLabel {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-right: 2rem;
+}
+
+.list-container {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  background-color: #71717a;
+  display: flex;
+  border: 2px solid #18181b;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px #0003, 0 25px 50px #0000001a;
+  align-items: center;
+}
+
+.list-item {
+  padding: 0.7rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1300px) {
+  body {
+    font-size: 0.75rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .pLabel {
+    font-size: 0.8rem;
+  }
+
+  .list-item {
+    padding: 0.4rem;
+    font-size: 0.6rem;
+  }
+
+  .project-info {
+    flex-basis: 80px;
+  }
+
+  .project-info:first-child {
+    flex-basis: 150px;
+  }
+}
+
+@media (max-width: 950px) {
+  main {
+    gap: 10px;
+    align-items: center;
+  }
+  .project-names {
+    display: none;
+  }
+  .project-element {
+    flex-direction: column;
+
+    width: 60%;
+  }
+
+  .project-info {
+    flex-basis: 5px;
+  }
+
+  .project-info:first-child {
+    flex-basis: 5px;
+  }
 }

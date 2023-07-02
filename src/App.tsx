@@ -12,7 +12,7 @@ export default function App() {
   }, []);
   return (
     <div>
-      <h1>Open Media Projects</h1>
+      <h1>Helmut Toolz</h1>
       <main>
         <div className="project-names">
           <p className="project-info">Cosmo Projekt Id</p>
@@ -47,7 +47,7 @@ export default function App() {
         <div className="list-container">
           <label className="pLabel">Projektauswahl:</label>
 
-          <select name="projekte" id="projekte">
+          <select className="list-item" name="projekte" id="projekte">
             {projects.map((task) => {
               return (
                 <option value={task.projektName}>{task.projektName}</option>
