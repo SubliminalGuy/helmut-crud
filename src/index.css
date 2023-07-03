@@ -24,7 +24,7 @@ header {
 h1 {
   color: #4f46e5;
   font-style: bold;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: inherit;
   text-align: center;
   text-shadow: 2px 2px #3730a3;
@@ -127,6 +127,9 @@ button {
 }
 
 @media (max-width: 1300px) {
+  h1 {
+    font-size: 1.8rem;
+  }
   body {
     font-size: 0.75rem;
   }
@@ -150,6 +153,9 @@ button {
 }
 
 @media (max-width: 950px) {
+  h1 {
+    font-size: 1.7rem;
+  }
   main {
     gap: 10px;
     align-items: center;
