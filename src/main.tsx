@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import OpenMedia from "./pages/OpenMedia";
 import Hostname from "./pages/Servername";
 import Audiomix from "./pages/Audiomix";
+import AICut from "./pages/AICut";
 
 import "./index.css";
 
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="openmedia" element={<OpenMedia />} />
       <Route path="audiomix" element={<Audiomix />} />
       <Route path="hostname" element={<Hostname />} />
+      <Route path="aicut" element={<AICut />} />
     </Route>
   )
 );
