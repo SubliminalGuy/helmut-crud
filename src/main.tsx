@@ -12,6 +12,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import OpenMedia from "./pages/OpenMedia";
 import Hostname from "./pages/Hostname";
+import Audiomix from "./pages/Audiomix";
 
 import "./index.css";
 
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="openmedia" element={<OpenMedia />} />
+      <Route path="audiomix" element={<Audiomix />} />
       <Route path="hostname" element={<Hostname />} />
     </Route>
   )

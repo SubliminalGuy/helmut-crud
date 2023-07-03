@@ -19,6 +19,16 @@ export default function Header() {
             <Avatar.Fallback className="AvatarFallback">OM</Avatar.Fallback>
           </Avatar.Root>
         </NavLink>
+        <NavLink to="/audiomix">
+          <Avatar.Root className="AvatarRoot">
+            <Avatar.Image
+              className="AvatarImage"
+              src="/cassette-tape.png"
+              alt="Audiomix"
+            />
+            <Avatar.Fallback className="AvatarFallback">HN</Avatar.Fallback>
+          </Avatar.Root>
+        </NavLink>
         <NavLink to="/hostname">
           <Avatar.Root className="AvatarRoot">
             <Avatar.Image
