@@ -22,12 +22,12 @@ header {
 }
 
 h1 {
-  color: #4f46e5;
+  color: #2aa1db;
   font-style: bold;
   font-size: 2rem;
   font-weight: inherit;
   text-align: center;
-  text-shadow: 2px 2px #3730a3;
+  text-shadow: 1px 1px #8496f5;
 }
 
 .brand-name {

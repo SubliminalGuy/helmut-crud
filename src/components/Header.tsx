@@ -9,19 +9,12 @@ export default function Header() {
         <Avatar.Root className="AvatarRoot">
           <Avatar.Image
             className="AvatarImage"
-            src="/gantt-chart-square.png"
+            src="/folder-kanban.png"
             alt="Pedro Duarte"
           />
           <Avatar.Fallback className="AvatarFallback">OM</Avatar.Fallback>
         </Avatar.Root>
-        <Avatar.Root className="AvatarRoot">
-          <Avatar.Image
-            className="AvatarImage"
-            src="/list-todo.png"
-            alt="Projectlist"
-          />
-          <Avatar.Fallback className="AvatarFallback">PL</Avatar.Fallback>
-        </Avatar.Root>
+
         <Avatar.Root className="AvatarRoot">
           <Avatar.Image
             className="AvatarImage"
