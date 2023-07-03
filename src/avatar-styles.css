@@ -2,7 +2,22 @@
 @import "@radix-ui/colors/violet.css";
 
 .tool-links {
-  margin-right: 3rem;
+  margin-right: 6rem;
+}
+
+.header-logo {
+  color: #2aa1db;
+  font-style: bold;
+  font-size: 2rem;
+  font-weight: inherit;
+  text-align: center;
+  text-shadow: 1px 1px #8496f5;
+}
+
+.brand-name {
+  margin-left: 6rem;
+  margin-right: auto;
+  text-decoration: none;
 }
 
 .AvatarRoot {
@@ -34,4 +49,16 @@
   font-size: 15px;
   line-height: 1;
   font-weight: 500;
+}
+
+@media (max-width: 1300px) {
+  .header-logo {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .header-logo {
+    font-size: 1.6rem;
+  }
 }

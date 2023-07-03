@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <Link to="/" className="brand-name">
-        <h1>Helmut Toolz</h1>
+        <h1 className="header-logo">Helmut Toolz</h1>
       </Link>
       <div className="tool-links" style={{ display: "flex", gap: 30 }}>
         <NavLink to="/openmedia">
