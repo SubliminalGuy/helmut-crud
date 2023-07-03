@@ -80,13 +80,22 @@ button {
 
 .project-info {
   padding: 0.7rem;
-  flex-basis: 10px;
+  flex-basis: 120px;
   flex-shrink: 3;
   display: flex;
   justify-content: flex-start;
 }
 
+.project-info-big {
+  font-size: 1rem;
+  flex-basis: 120px;
+}
+
 .project-info:first-child {
+  flex-basis: 180px;
+}
+
+.project-info-big:first-child {
   flex-basis: 180px;
 }
 
@@ -176,5 +185,6 @@ button {
     display: flex;
     margin-right: 1rem;
     color: #171717;
+    font-size: 0.8rem;
   }
 }

@@ -10,16 +10,17 @@ export default function OpenMedia() {
   useEffect(() => {
     projectRepo.find().then(setProjects);
   }, []);
+
   return (
     <div>
       <main>
         <div className="project-names">
-          <p className="project-info">Cosmo Projekt Id</p>
-          <p className="project-info">Cosmo Projekt Name</p>
-          <p className="project-info">OM ID</p>
-          <p className="project-info">OM Name</p>
-          <p className="project-info">OM Redaktion</p>
-          <p className="project-info">OM Planungsdatum</p>
+          <p className="project-info-big">Cosmo ProjektId</p>
+          <p className="project-info-big">Cosmo Projektname</p>
+          <p className="project-info-big">OM ID</p>
+          <p className="project-info-big">OM Name</p>
+          <p className="project-info-big">OM Redaktion</p>
+          <p className="project-info-big">OM Planungsdatum</p>
         </div>
         {projects.map((task) => {
           let datum = "kein Datum";

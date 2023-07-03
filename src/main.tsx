@@ -11,7 +11,7 @@ import {
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import OpenMedia from "./pages/OpenMedia";
-import Hostname from "./pages/Hostname";
+import Hostname from "./pages/Servername";
 import Audiomix from "./pages/Audiomix";
 
 import "./index.css";
