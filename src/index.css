@@ -33,6 +33,7 @@ h1 {
 .brand-name {
   margin-left: 3rem;
   margin-right: auto;
+  text-decoration: none;
 }
 
 main {

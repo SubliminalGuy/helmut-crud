@@ -1,28 +1,34 @@
+import { Link, NavLink } from "react-router-dom";
 import * as Avatar from "@radix-ui/react-avatar";
 import "../avatar-styles.css";
 
 export default function Header() {
   return (
     <header>
-      <h1 className="brand-name">Helmut Toolz</h1>
+      <Link to="/" className="brand-name">
+        <h1>Helmut Toolz</h1>
+      </Link>
       <div className="tool-links" style={{ display: "flex", gap: 30 }}>
-        <Avatar.Root className="AvatarRoot">
-          <Avatar.Image
-            className="AvatarImage"
-            src="/folder-kanban.png"
-            alt="Pedro Duarte"
-          />
-          <Avatar.Fallback className="AvatarFallback">OM</Avatar.Fallback>
-        </Avatar.Root>
-
-        <Avatar.Root className="AvatarRoot">
-          <Avatar.Image
-            className="AvatarImage"
-            src="/server.png"
-            alt="Hostnames"
-          />
-          <Avatar.Fallback className="AvatarFallback">HN</Avatar.Fallback>
-        </Avatar.Root>
+        <NavLink to="/openmedia">
+          <Avatar.Root className="AvatarRoot">
+            <Avatar.Image
+              className="AvatarImage"
+              src="/folder-kanban.png"
+              alt="OpenMedia"
+            />
+            <Avatar.Fallback className="AvatarFallback">OM</Avatar.Fallback>
+          </Avatar.Root>
+        </NavLink>
+        <NavLink to="/hostname">
+          <Avatar.Root className="AvatarRoot">
+            <Avatar.Image
+              className="AvatarImage"
+              src="/server.png"
+              alt="Hostnames"
+            />
+            <Avatar.Fallback className="AvatarFallback">HN</Avatar.Fallback>
+          </Avatar.Root>
+        </NavLink>
       </div>
     </header>
   );
