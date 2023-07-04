@@ -1,3 +1,7 @@
 export default function Audiomix() {
-  return <h1>AICut Metadata</h1>;
+  return (
+    <div className="headline-container">
+      <h1>AICut Metadata</h1>
+    </div>
+  );
 }

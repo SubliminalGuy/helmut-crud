@@ -10,12 +10,25 @@ body {
   font-size: 0.9rem;
 }
 
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
 h1 {
   text-align: center;
   font-size: 1.6rem;
 }
 
-/* Header CSS */
+.headline-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
 
 header {
   display: flex;
@@ -30,6 +43,14 @@ main {
   display: flex;
   flex-direction: column;
   gap: 3px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 6rem;
 }
 
 input {
@@ -147,7 +168,7 @@ button {
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 850px) {
   main {
     gap: 10px;
     align-items: center;
@@ -186,5 +207,11 @@ button {
     margin-right: 1rem;
     color: #171717;
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 0.6rem;
   }
 }

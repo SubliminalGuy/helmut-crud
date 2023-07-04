@@ -10,7 +10,7 @@ export default function Header() {
       <Link to="/" className="brand-name">
         <h1 className="header-logo">Helmut Toolz</h1>
       </Link>
-      <div className="tool-links" style={{ display: "flex", gap: 30 }}>
+      <div className="tool-links" style={{ display: "flex", gap: 20 }}>
         <NavLink to="/openmedia">
           <Tooltip.Provider>
             <Tooltip.Root>
