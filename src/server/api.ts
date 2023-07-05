@@ -2,11 +2,12 @@ import { remultExpress } from "remult/remult-express";
 import { createKnexDataProvider } from "remult/remult-knex";
 import { Project } from "../shared/Project";
 import { Hostname } from "../shared/Hostname";
+import { AiMetadata } from "../shared/AiMetadata";
 
 require("dotenv").config();
 
 export const api = remultExpress({
-  entities: [Project, Hostname],
+  entities: [Project, Hostname, AiMetadata],
   dataProvider: createKnexDataProvider({
     client: "mysql2",
     connection: {
