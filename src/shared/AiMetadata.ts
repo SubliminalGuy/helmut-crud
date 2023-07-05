@@ -41,5 +41,5 @@ export class AiMetadata {
   assetIds: string[] = [];
 
   @Fields.date()
-  openMediaPlanungsdatum = new Date();
+  createdDate = new Date();
 }
