@@ -7,34 +7,11 @@ import "../tooltip-style.css";
 export default function Header() {
   return (
     <header>
-      <Link to="/" className="brand-name">
-        <h1 className="header-logo">Helmut Toolz</h1>
+      <Link to="/audiomix" className="brand-name">
+        <img className="header-logo" src="/rbb-logo.png" alt="RBB Logo" />
+        <h1 className="header-text">Filemanagement</h1>
       </Link>
       <div className="tool-links" style={{ display: "flex", gap: 20 }}>
-        <NavLink to="/openmedia">
-          <Tooltip.Provider>
-            <Tooltip.Root>
-              <Tooltip.Trigger asChild>
-                <Avatar.Root className="AvatarRoot">
-                  <Avatar.Image
-                    className="AvatarImage"
-                    src="/folder-kanban.png"
-                    alt="OpenMedia"
-                  />
-                  <Avatar.Fallback className="AvatarFallback">
-                    OM
-                  </Avatar.Fallback>
-                </Avatar.Root>
-              </Tooltip.Trigger>
-              <Tooltip.Portal>
-                <Tooltip.Content className="TooltipContent" sideOffset={5}>
-                  Openmedia Projects
-                  <Tooltip.Arrow className="TooltipArrow" />
-                </Tooltip.Content>
-              </Tooltip.Portal>
-            </Tooltip.Root>
-          </Tooltip.Provider>
-        </NavLink>
         <NavLink to="/audiomix">
           <Tooltip.Provider>
             <Tooltip.Root>
@@ -59,6 +36,31 @@ export default function Header() {
             </Tooltip.Root>
           </Tooltip.Provider>
         </NavLink>
+        <NavLink to="/openmedia">
+          <Tooltip.Provider>
+            <Tooltip.Root>
+              <Tooltip.Trigger asChild>
+                <Avatar.Root className="AvatarRoot">
+                  <Avatar.Image
+                    className="AvatarImage"
+                    src="/folder-kanban.png"
+                    alt="OpenMedia"
+                  />
+                  <Avatar.Fallback className="AvatarFallback">
+                    OM
+                  </Avatar.Fallback>
+                </Avatar.Root>
+              </Tooltip.Trigger>
+              <Tooltip.Portal>
+                <Tooltip.Content className="TooltipContent" sideOffset={5}>
+                  Openmedia Projects
+                  <Tooltip.Arrow className="TooltipArrow" />
+                </Tooltip.Content>
+              </Tooltip.Portal>
+            </Tooltip.Root>
+          </Tooltip.Provider>
+        </NavLink>
+
         <NavLink to="/hostname">
           <Tooltip.Provider>
             <Tooltip.Root>
