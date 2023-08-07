@@ -3,18 +3,14 @@
 
 .tool-links {
   margin-right: 6rem;
+  margin-top: 1rem;
+  display: flex;
 }
 
-.header-logo {
-  width: 10%;
-}
-
-.header-text {
-  color: #000000;
-  font-style: bold;
-  font-size: 2.5rem;
-  font-weight: inherit;
-  text-align: center;
+.tool-menu {
+  margin-right: 2rem;
+  margin-top: 1rem;
+  display: none;
 }
 
 .brand-name {
@@ -25,6 +21,19 @@
   margin-right: auto;
   text-decoration: none;
   gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.brand-name-img {
+  width: 5.5rem;
+}
+
+.brand-name-text {
+  color: #000000;
+  font-style: bold;
+  font-size: 2.3rem;
+  font-weight: inherit;
+  text-align: center;
 }
 
 .AvatarRoot {
@@ -58,9 +67,16 @@
   font-weight: 500;
 }
 
-@media (max-width: 1300px) {
-  .header-logo {
+@media (max-width: 1200px) {
+  .brand-name-img {
+    width: 4rem;
+  }
+  .brand-name-text {
     font-size: 1.6rem;
+  }
+  .AvatarRoot {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -93,9 +109,14 @@
 
   .brand-name {
     margin-left: 1.4rem;
+    gap: 0.8rem;
   }
 
   .tool-links {
-    margin-right: 1.6rem;
+    display: none;
+  }
+
+  .tool-menu {
+    display: flex;
   }
 }

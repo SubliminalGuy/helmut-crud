@@ -37,27 +37,27 @@ export default function OpenMedia() {
             <div className="project-element" key={task.projektId}>
               <div className="project-info">
                 <p className="additional-info">Cosmo Projekt Id</p>
-                <p>{task.projektId}</p>
+                <p className="project-paragraph">{task.projektId}</p>
               </div>
               <div className="project-info">
                 <p className="additional-info">Cosmo Projekt Name</p>
-                <p>{task.projektName}</p>
+                <p className="project-paragraph">{task.projektName}</p>
               </div>
               <div className="project-info">
                 <p className="additional-info">OM ID</p>
-                <p>{task.openMediaId}</p>
+                <p className="project-paragraph">{task.openMediaId}</p>
               </div>
               <div className="project-info">
                 <p className="additional-info">OM Name</p>
-                <p>{task.openMediaThema}</p>
+                <p className="project-paragraph">{task.openMediaThema}</p>
               </div>
               <div className="project-info">
                 <p className="additional-info">OM Redaktion</p>
-                <p>{task.openMediaRed}</p>
+                <p className="project-paragraph">{task.openMediaRed}</p>
               </div>
               <div className="project-info">
                 <p className="additional-info">OM Planungsdatum</p>
-                <p>{datum}</p>
+                <p className="project-paragraph">{datum}</p>
               </div>
             </div>
           );

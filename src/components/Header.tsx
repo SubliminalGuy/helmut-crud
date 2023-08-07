@@ -8,10 +8,10 @@ export default function Header() {
   return (
     <header>
       <Link to="/audiomix" className="brand-name">
-        <img className="header-logo" src="/rbb-logo.png" alt="RBB Logo" />
-        <h1 className="header-text">Filemanagement</h1>
+        <img className="brand-name-img" src="/rbb-logo.png" alt="RBB Logo" />
+        <h1 className="brand-name-text">Filemanagement</h1>
       </Link>
-      <div className="tool-links" style={{ display: "flex", gap: 20 }}>
+      <div className="tool-links" style={{ gap: 20 }}>
         <NavLink to="/audiomix">
           <Tooltip.Provider>
             <Tooltip.Root>
@@ -96,7 +96,7 @@ export default function Header() {
                     alt="AI Cut"
                   />
                   <Avatar.Fallback className="AvatarFallback">
-                    HN
+                    AI
                   </Avatar.Fallback>
                 </Avatar.Root>
               </Tooltip.Trigger>
@@ -109,6 +109,12 @@ export default function Header() {
             </Tooltip.Root>
           </Tooltip.Provider>
         </NavLink>
+      </div>
+      <div className="tool-menu" style={{ gap: 20 }}>
+        <Avatar.Root className="AvatarRoot">
+          <Avatar.Image className="AvatarImage" src="/menu.png" alt="Menu" />
+          <Avatar.Fallback className="AvatarFallback">MN</Avatar.Fallback>
+        </Avatar.Root>
       </div>
     </header>
   );

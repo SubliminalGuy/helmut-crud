@@ -23,11 +23,11 @@ export default function Servername() {
             <div className="project-element" key={task.hostname}>
               <div className="project-info">
                 <p className="additional-info">Hostname</p>
-                <p>{task.hostname}</p>
+                <p className="project-paragraph">{task.hostname}</p>
               </div>
               <div className="project-info">
                 <p className="additional-info">Rechnernummer</p>
-                <p>{task.rechnernummer}</p>
+                <p className="project-paragraph">{task.rechnernummer}</p>
               </div>
             </div>
           );
