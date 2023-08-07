@@ -48,10 +48,8 @@ h1 {
 header {
   display: flex;
   align-items: center;
-
   width: 100%;
   height: 6rem;
-  border: green solid 2px;
 }
 
 main {
