@@ -8,6 +8,10 @@
     url("interstate-regular-comp-58b641cc0aca1.woff") format("woff");
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: Interstate Regular Comp, Arial;
   background-color: #ffffff;
@@ -17,13 +21,14 @@ body {
   box-sizing: border-box;
   font-size: 1rem;
   letter-spacing: 0.1rem;
+  min-height: 100%;
 }
 
 .layout-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 h1 {
