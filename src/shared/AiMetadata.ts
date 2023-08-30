@@ -10,7 +10,11 @@ export class AiMetadata {
   @Fields.string()
   sprache = "";
 
-  @Fields.string()
+  @Fields.string({
+    valueConverter: {
+      fieldTypeInDb: "longtext",
+    },
+  })
   sprechertext = "";
 
   @Fields.string()
