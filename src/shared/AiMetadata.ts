@@ -10,7 +10,7 @@ export class AiMetadata {
   @Fields.string()
   sprache = "";
 
-  @Fields.json()
+  @Fields.string()
   sprechertext = "";
 
   @Fields.string()
