@@ -37,7 +37,11 @@ export default function AICut() {
         </div>
 
         {aiProjects
-          .sort((a, b) => b.createdDate - a.createdDate)
+          .sort(
+            (a, b) =>
+              new Date(b.createdDate).valueOf() -
+              new Date(a.createdDate).valueOf()
+          )
           .map((proj) => {
             let datum = "kein Datum";
             if (proj.createdDate) {
