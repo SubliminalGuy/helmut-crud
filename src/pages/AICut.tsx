@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { remult } from "remult";
 import { AiMetadata } from "../shared/AiMetadata";
 
 const aiMetadataRepo = remult.repo(AiMetadata);
 
+export function loader() {
+  return aiMetadataRepo.find();
+}
+
 export default function AICut() {
-  const [aiProjects, setAiProjects] = useState<AiMetadata[]>([]);
-
-  useEffect(() => {
-    aiMetadataRepo.find().then(setAiProjects);
-  }, []);
-
   const shortenText = (text: string) => {
     if (text.length > 100) {
       text = text.substring(0, 99) + "...";
@@ -23,6 +21,22 @@ export default function AICut() {
     text = textArray.slice(-4, textArray.length).join("/");
     return text;
   };
+
+  const aiProjects = useLoaderData() as {
+    jobName: string;
+    sprache: string;
+    sprechertext: string;
+    stimme: string;
+    projektpfad: string;
+    autorEmail: string;
+    prepadding: string;
+    postpadding: string;
+    speakertiming: string;
+    alternativeSegments: string;
+    autocutPfade: string;
+    assetIds: string;
+    createdDate: Date;
+  }[];
 
   return (
     <div>

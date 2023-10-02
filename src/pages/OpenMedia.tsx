@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { remult } from "remult";
 import { Project } from "../shared/Project";
 
 const projectRepo = remult.repo(Project);
 
-export default function OpenMedia() {
-  const [projects, setProjects] = useState<Project[]>([]);
+export function loader() {
+  return projectRepo.find();
+}
 
-  useEffect(() => {
-    projectRepo.find().then(setProjects);
-  }, []);
+export default function OpenMedia() {
+  const projects = useLoaderData() as {
+    projektId: string;
+    projektName: string;
+    openMediaId: string;
+    openMediaThema: string;
+    openMediaRed: string;
+    openMediaPlanungsdatum: Date;
+  }[];
 
   return (
     <div>

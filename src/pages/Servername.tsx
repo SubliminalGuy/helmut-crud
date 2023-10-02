@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { remult } from "remult";
 import { Hostname } from "../shared/Hostname";
 
 const hostnameRepo = remult.repo(Hostname);
 
-export default function Servername() {
-  const [hostnames, setHostnames] = useState<Hostname[]>([]);
+export function loader() {
+  return hostnameRepo.find();
+}
 
-  useEffect(() => {
-    hostnameRepo.find().then(setHostnames);
-  }, []);
+export default function Servername() {
+  const hostnames = useLoaderData() as {
+    hostname: string;
+    rechnernummer: string;
+  }[];
 
   return (
     <div>

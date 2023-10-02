@@ -10,10 +10,10 @@ import {
 
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import OpenMedia from "./pages/OpenMedia";
-import Hostname from "./pages/Servername";
+import OpenMedia, { loader as openMediaLoader } from "./pages/OpenMedia";
+import Hostname, { loader as hostnameLoader } from "./pages/Servername";
 import Audiomix from "./pages/Audiomix";
-import AICut from "./pages/AICut";
+import AICut, { loader as aiCutLoader } from "./pages/AICut";
 
 import "./index.css";
 
@@ -21,10 +21,14 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="openmedia" element={<OpenMedia />} />
+      <Route
+        path="openmedia"
+        loader={openMediaLoader}
+        element={<OpenMedia />}
+      />
       <Route path="audiomix" element={<Audiomix />} />
-      <Route path="hostname" element={<Hostname />} />
-      <Route path="aicut" element={<AICut />} />
+      <Route path="hostname" loader={hostnameLoader} element={<Hostname />} />
+      <Route path="aicut" loader={aiCutLoader} element={<AICut />} />
     </Route>
   )
 );
