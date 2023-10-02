@@ -4,7 +4,11 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 import "../avatar-styles.css";
 import "../tooltip-style.css";
 
-export default function Header() {
+export interface HeaderProps {
+  modalHandler: () => void;
+}
+
+export default function Header({ modalHandler }: HeaderProps) {
   return (
     <header>
       <Link to="/audiomix" className="brand-name">
@@ -112,7 +116,12 @@ export default function Header() {
       </div>
       <div className="tool-menu" style={{ gap: 20 }}>
         <Avatar.Root className="AvatarRoot">
-          <Avatar.Image className="AvatarImage" src="/menu.png" alt="Menu" />
+          <Avatar.Image
+            onClick={() => modalHandler()}
+            className="AvatarImage"
+            src="/menu.png"
+            alt="Menu"
+          />
           <Avatar.Fallback className="AvatarFallback">MN</Avatar.Fallback>
         </Avatar.Root>
       </div>
