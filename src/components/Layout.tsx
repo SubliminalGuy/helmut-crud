@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 export default function Layout() {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   function menuIconClick() {
     const modal = !showModal;
