@@ -4,11 +4,14 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
-
 import { useState } from "react";
+import nativeToast from "native-toast";
 import "../select-style.css";
+import "../native-toast.css";
 
 export default function Audiomix() {
+  /* React State Management für die Select-Elemente
+   */
   const [projectData, setProjectData] = useState({
     projectName: "test",
     audioSpur1: "testsf",
@@ -20,12 +23,22 @@ export default function Audiomix() {
    *  @param value: string - der Wert des Select-Elements, z.B. Schiesserei in Neukölln
    */
   const handleValueChange = (type: string, value: string) => {
-    console.log(type, value);
     setProjectData((prev) => {
       return {
         ...prev,
         [type]: value,
       };
+    });
+  };
+
+  const buttonHandler = () => {
+    console.log(projectData);
+    nativeToast({
+      message: "Der Job wurde erfolgreich an Helmut übergeben!",
+      position: "south-east",
+      // Self destroy in 5 seconds
+      timeout: 5000,
+      type: "info",
     });
   };
 
@@ -47,9 +60,9 @@ export default function Audiomix() {
           <Select.Content
             className="SelectContent"
             position="popper"
-            side="right"
+            side={window.innerWidth > 800 ? "right" : "bottom"}
             align="center"
-            sideOffset={50}
+            sideOffset={window.innerWidth > 800 ? 40 : 0}
           >
             <Select.ScrollUpButton className="SelectScrollButton">
               <ChevronUpIcon />
@@ -95,9 +108,9 @@ export default function Audiomix() {
           <Select.Content
             className="SelectContent"
             position="popper"
-            side="right"
+            side={window.innerWidth > 800 ? "right" : "bottom"}
             align="center"
-            sideOffset={50}
+            sideOffset={window.innerWidth > 800 ? 40 : 0}
           >
             <Select.ScrollUpButton className="SelectScrollButton">
               <ChevronUpIcon />
@@ -142,9 +155,9 @@ export default function Audiomix() {
           <Select.Content
             className="SelectContent"
             position="popper"
-            side="right"
+            side={window.innerWidth > 800 ? "right" : "bottom"}
             align="center"
-            sideOffset={50}
+            sideOffset={window.innerWidth > 800 ? 40 : 0}
           >
             <Select.ScrollUpButton className="SelectScrollButton">
               <ChevronUpIcon />
@@ -174,7 +187,11 @@ export default function Audiomix() {
           </Select.Content>
         </Select.Portal>
       </Select.Root>
-      <button className="Button" style={{ marginTop: 10 }}>
+      <button
+        className="Button"
+        onClick={buttonHandler}
+        style={{ marginTop: 10 }}
+      >
         Einchecken
       </button>
     </div>

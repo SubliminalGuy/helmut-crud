@@ -118,3 +118,21 @@ button {
 .Button:focus {
   box-shadow: 0 0 0 2px lightgrey;
 }
+
+@media (max-width: 1000px) {
+  .SelectTrigger {
+    font-size: 14px;
+    width: 50%;
+    gap: 5px;
+  }
+
+  .SelectLabel {
+    font-size: 12px;
+  }
+
+  .Button {
+    font-size: 14px;
+
+    width: 40%;
+  }
+}
