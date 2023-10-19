@@ -1,21 +1,55 @@
 import * as Select from "@radix-ui/react-select";
+import { useLoaderData } from "react-router-dom";
 import {
   CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
+import { remult } from "remult";
 import { useState } from "react";
+
+import { ProTools } from "../shared/ProTools";
+
+const proToolsRepo = remult.repo(ProTools);
+
+export function loader() {
+  return proToolsRepo.find();
+}
+
 import nativeToast from "native-toast";
 import "../select-style.css";
 import "../native-toast.css";
 
-export default function Audiomix() {
+export default function ProToolsCheckin() {
+  /* Type Declaration für die Projektdaten aus der Datenbank
+   */
+  const helmutProjects = useLoaderData() as {
+    projectname: string;
+    projectId: string;
+    jobId: string;
+    mxfPath: string;
+    autor: string;
+    createdDate: Date;
+  }[];
+
   /* React State Management für die Select-Elemente
    */
   const [projectData, setProjectData] = useState({
-    projectName: "test",
-    audioSpur1: "testsf",
-    audioSpur2: "testit",
+    projectName: "",
+    audioSpur1: "",
+    audioSpur2: "",
+  });
+
+  const selectElements = helmutProjects.map((project) => {
+    return (
+      <Select.Item
+        className="SelectItem"
+        key={project.jobId}
+        value={project.projectname}
+      >
+        {project.projectname}
+      </Select.Item>
+    );
   });
 
   /* Ändert die Werte in projectData, wenn ein Select-Element verändert wird
@@ -34,12 +68,15 @@ export default function Audiomix() {
   const buttonHandler = () => {
     console.log(projectData);
     nativeToast({
-      message: "Der Job wurde erfolgreich an Helmut übergeben!",
+      message: "Der Job wird an das Helmut-Interface übergeben ...",
       position: "south-east",
       // Self destroy in 5 seconds
       timeout: 5000,
       type: "info",
     });
+    setTimeout(() => {
+      location.reload();
+    }, 1000 * 5);
   };
 
   return (
@@ -61,7 +98,7 @@ export default function Audiomix() {
             className="SelectContent"
             position="popper"
             side={window.innerWidth > 800 ? "right" : "bottom"}
-            align="center"
+            align={window.innerWidth > 800 ? "start" : "center"}
             sideOffset={window.innerWidth > 800 ? 40 : 0}
           >
             <Select.ScrollUpButton className="SelectScrollButton">
@@ -70,21 +107,7 @@ export default function Audiomix() {
             <Select.Viewport className="SelectViewport">
               <Select.Group>
                 <Select.Label className="SelectLabel">Projects</Select.Label>
-                <Select.Item
-                  className="SelectItem"
-                  value="Schiesserei in Neukölln"
-                >
-                  Schiesserei in Neukölln
-                </Select.Item>
-                <Select.Item className="SelectItem" value="A100 stoppen?">
-                  A100 stoppen?
-                </Select.Item>
-                <Select.Item className="SelectItem" value="Radweg entfernt">
-                  Radweg entfernt
-                </Select.Item>
-                <Select.Item className="SelectItem" value="Grüne am Ende?">
-                  Grüne am Ende?
-                </Select.Item>
+                {selectElements}
               </Select.Group>
             </Select.Viewport>
             <Select.ScrollDownButton className="SelectScrollButton">
@@ -156,7 +179,7 @@ export default function Audiomix() {
             className="SelectContent"
             position="popper"
             side={window.innerWidth > 800 ? "right" : "bottom"}
-            align="center"
+            align={window.innerWidth > 800 ? "end" : "center"}
             sideOffset={window.innerWidth > 800 ? 40 : 0}
           >
             <Select.ScrollUpButton className="SelectScrollButton">

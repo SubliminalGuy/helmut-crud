@@ -12,7 +12,9 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import OpenMedia, { loader as openMediaLoader } from "./pages/OpenMedia";
 import Hostname, { loader as hostnameLoader } from "./pages/Servername";
-import Audiomix from "./pages/Audiomix";
+import ProToolsCheckin, {
+  loader as proToolsLoader,
+} from "./pages/ProToolsCheckin";
 import AICut, { loader as aiCutLoader } from "./pages/AICut";
 
 import "./index.css";
@@ -26,7 +28,11 @@ const router = createBrowserRouter(
         loader={openMediaLoader}
         element={<OpenMedia />}
       />
-      <Route path="audiomix" element={<Audiomix />} />
+      <Route
+        path="audiomix"
+        loader={proToolsLoader}
+        element={<ProToolsCheckin />}
+      />
       <Route path="hostname" loader={hostnameLoader} element={<Hostname />} />
       <Route path="aicut" loader={aiCutLoader} element={<AICut />} />
     </Route>

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { remult } from "remult";
 import { Project } from "../shared/Project";
