@@ -11,10 +11,10 @@ export interface HeaderProps {
 export default function Header({ modalHandler }: HeaderProps) {
   return (
     <header>
-      <Link to="/audiomix" className="brand-name">
+      <NavLink to="/" className="brand-name">
         <img className="brand-name-img" src="/rbb-logo.png" alt="RBB Logo" />
         <h1 className="brand-name-text">Filemanagement</h1>
-      </Link>
+      </NavLink>
       <div className="tool-links" style={{ gap: 20 }}>
         <NavLink to="/audiomix">
           <Tooltip.Provider>

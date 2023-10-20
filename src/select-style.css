@@ -108,7 +108,7 @@ button {
   font-weight: 500;
   height: 35px;
   width: 20%;
-
+  margin-top: 3rem;
   background-color: white;
   color: #000000;
 }
@@ -132,7 +132,7 @@ button {
 
   .Button {
     font-size: 14px;
-
+    margin-top: 10rem;
     width: 40%;
   }
 }
