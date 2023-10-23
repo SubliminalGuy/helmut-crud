@@ -40,6 +40,11 @@ export default function ProToolsCheckin() {
     audioSpur2: "",
   });
 
+  /* React State Management for the CheckIn Button
+  */
+
+  const [selectOpen, setSelectOpen] = useState(false)
+console.log(selectOpen)
   const selectElements = helmutProjects.map((project) => {
     return (
       <Select.Item
@@ -65,6 +70,11 @@ export default function ProToolsCheckin() {
     });
   };
 
+  const handleOpenSelect = () => {
+   
+    setSelectOpen(!selectOpen)
+  }
+
   const buttonHandler = () => {
     console.log(projectData);
     nativeToast({
@@ -83,6 +93,7 @@ export default function ProToolsCheckin() {
     <div className="headline-container">
       <h1 className="headline-container-h1">CheckIn ProTools</h1>
       <Select.Root
+      onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("projectName", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -117,6 +128,7 @@ export default function ProToolsCheckin() {
         </Select.Portal>
       </Select.Root>
       <Select.Root
+      onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("audioSpur1", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -167,6 +179,7 @@ export default function ProToolsCheckin() {
         </Select.Portal>
       </Select.Root>
       <Select.Root
+      onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("audioSpur2", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -216,7 +229,7 @@ export default function ProToolsCheckin() {
           </Select.Content>
         </Select.Portal>
       </Select.Root>
-      <button disabled className="Button" onClick={buttonHandler}>
+      <button disabled={selectOpen} className="Button" onClick={buttonHandler}>
         Einchecken
       </button>
     </div>
