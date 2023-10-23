@@ -4,4 +4,4 @@ import { api } from "./api";
 const app = express();
 app.use(api);
 
-app.listen(3002, () => console.log("Server started at port 3002"));
+app.listen(6200, () => console.log("Server started at port 6200"));
