@@ -18,8 +18,7 @@ export const api = remultExpress({
       password: process.env.PASSWORD,
       options: {
         enableArithAbort: true,
-        encrypt: true,
-        instanceName: `sqlexpress`,
+        encrypt: true
       },
     },
   }),

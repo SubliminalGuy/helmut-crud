@@ -155,6 +155,9 @@ export default function ProToolsCheckin() {
                 <Select.Item className="SelectItem" value="landtag sf">
                   landtag sf
                 </Select.Item>
+                <Select.Item className="SelectItem" value="sommer sf">
+                  sommer sf
+                </Select.Item>
               </Select.Group>
             </Select.Viewport>
             <Select.ScrollDownButton className="SelectScrollButton">
@@ -201,6 +204,9 @@ export default function ProToolsCheckin() {
                 </Select.Item>
                 <Select.Item className="SelectItem" value="landtag M&E">
                   landtag M&E
+                </Select.Item>
+                <Select.Item className="SelectItem" value="sommer IT">
+                  sommer it
                 </Select.Item>
               </Select.Group>
             </Select.Viewport>
