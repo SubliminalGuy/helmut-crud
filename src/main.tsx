@@ -19,6 +19,9 @@ import AICut, { loader as aiCutLoader } from "./pages/AICut";
 
 import "./index.css";
 
+/* React State Management for Popup
+ */
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>

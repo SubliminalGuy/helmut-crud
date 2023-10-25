@@ -1,5 +1,5 @@
 import * as Select from "@radix-ui/react-select";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import {
   CheckIcon,
   ChevronDownIcon,
@@ -10,6 +10,8 @@ import { useState } from "react";
 
 import { ProTools } from "../shared/ProTools";
 
+import "../exit-popup.css";
+
 const proToolsRepo = remult.repo(ProTools);
 
 export function loader() {
@@ -19,6 +21,11 @@ export function loader() {
 import nativeToast from "native-toast";
 import "../select-style.css";
 import "../native-toast.css";
+
+type ContextType = {
+  showExitPopup: boolean;
+  setShowExitPopup: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export default function ProToolsCheckin() {
   /* Type Declaration für die Projektdaten aus der Datenbank
@@ -41,10 +48,10 @@ export default function ProToolsCheckin() {
   });
 
   /* React State Management for the CheckIn Button
-  */
+   */
 
-  const [selectOpen, setSelectOpen] = useState(false)
-console.log(selectOpen)
+  const [hasCheckedIn, setHasCheckedIn] = useState(false);
+
   const selectElements = helmutProjects.map((project) => {
     return (
       <Select.Item
@@ -56,6 +63,15 @@ console.log(selectOpen)
       </Select.Item>
     );
   });
+
+  /* State Variables for the ExitPopup that
+   * come form the useOutletContext of React Router 6
+   */
+
+  const [showExitPopup, setShowExitPopup] = useOutletContext() as [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>>
+  ];
 
   /* Ändert die Werte in projectData, wenn ein Select-Element verändert wird
    *  @param type: string - der Typ des Select-Elements, z.B. projectName
@@ -70,13 +86,13 @@ console.log(selectOpen)
     });
   };
 
-  const handleOpenSelect = () => {
-   
-    setSelectOpen(!selectOpen)
-  }
+  // const handleOpenSelect = () => {
+  //   setSelectOpen(!selectOpen);
+  // };
 
   const buttonHandler = () => {
     console.log(projectData);
+    setHasCheckedIn(true);
     nativeToast({
       message: "Der Job wird an das Helmut-Interface übergeben ...",
       position: "south-east",
@@ -93,7 +109,7 @@ console.log(selectOpen)
     <div className="headline-container">
       <h1 className="headline-container-h1">CheckIn ProTools</h1>
       <Select.Root
-      onOpenChange={() => handleOpenSelect()}
+        // onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("projectName", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -128,7 +144,7 @@ console.log(selectOpen)
         </Select.Portal>
       </Select.Root>
       <Select.Root
-      onOpenChange={() => handleOpenSelect()}
+        //onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("audioSpur1", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -179,7 +195,7 @@ console.log(selectOpen)
         </Select.Portal>
       </Select.Root>
       <Select.Root
-      onOpenChange={() => handleOpenSelect()}
+        //onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("audioSpur2", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -229,9 +245,33 @@ console.log(selectOpen)
           </Select.Content>
         </Select.Portal>
       </Select.Root>
-      <button disabled={selectOpen} className="Button" onClick={buttonHandler}>
+      <button
+        /* disabled={selectOpen} */ className="Button"
+        onClick={buttonHandler}
+      >
         Einchecken
       </button>
+      <div
+        className={`exit-intent-popup ${
+          showExitPopup && !hasCheckedIn ? "visible" : ""
+        }`}
+      >
+        <div className="newsletter">
+          <p>
+            Es wurde noch kein Job zu Helmut eingecheckt! Sind Sie sicher, dass
+            Sie die Seite verlassen wollen?
+          </p>
+
+          <button
+            className="close-button"
+            onClick={() => {
+              setShowExitPopup(false);
+            }}
+          >
+            Schliessen
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
