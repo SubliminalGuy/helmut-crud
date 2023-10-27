@@ -28,7 +28,6 @@ type ContextType = {
   setShowExitPopup: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-
 export default function ProToolsCheckin() {
   /* Type Declaration für die Projektdaten aus der Datenbank
    */
@@ -77,7 +76,6 @@ export default function ProToolsCheckin() {
       });
   }, []);
 
-  
   /* Erstellt die Select-Elemente aus den Projektdaten
    */
   const selectProjectElements = helmutProjects.map((project) => {
@@ -103,7 +101,6 @@ export default function ProToolsCheckin() {
           value={el.filePath}
         >
           {el.fileName}
-          
         </Select.Item>
       );
     }
@@ -121,12 +118,13 @@ export default function ProToolsCheckin() {
       };
     });
   };
-
- 
-
+  /* Funktion, die beim Click auf den CheckIn Button ausgeführt wird
+   * 1. Setzt den hasCheckedIn State auf true
+   * 2. Gibt eine nativeToast Nachricht aus
+   * 3. Reloadet die Seite nach 5 Sekunden
+   */
   const buttonHandler = () => {
     console.log(projectData);
-    
     nativeToast({
       message: "Der Job wird an das Helmut-Interface übergeben ...",
       position: "south-east",
@@ -153,6 +151,7 @@ export default function ProToolsCheckin() {
       <h1 className="headline-container-h1">CheckIn ProTools</h1>
       <Select.Root
         // onOpenChange={() => handleOpenSelect()}
+
         onValueChange={(name: string) => handleValueChange("projectName", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -187,7 +186,6 @@ export default function ProToolsCheckin() {
         </Select.Portal>
       </Select.Root>
       <Select.Root
-        //onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("audioSpur1", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -260,14 +258,7 @@ export default function ProToolsCheckin() {
           </Select.Content>
         </Select.Portal>
       </Select.Root>
-      <button
-        /* disabled={selectOpen} */ className="Button"
-        onClick={buttonHandler}
-      >
-      <button
-        /* disabled={selectOpen} */ className="Button"
-        onClick={buttonHandler}
-      >
+      <button className="Button" onClick={buttonHandler}>
         Einchecken
       </button>
       <div
