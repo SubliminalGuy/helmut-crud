@@ -95,6 +95,7 @@ export default function ProToolsCheckin() {
     (el: { filePath: string; fileName: string }) => {
       return (
         <Select.Item
+          asChild
           className="SelectItem"
           key={el.filePath}
           value={el.filePath}
