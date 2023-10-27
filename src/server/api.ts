@@ -10,13 +10,17 @@ require("dotenv").config();
 export const api = remultExpress({
   entities: [Project, Hostname, AiMetadata, ProTools],
   dataProvider: createKnexDataProvider({
-    client: "mysql2",
+    client: "mssql",
     connection: {
-      host: "localhost",
-      port: 3306,
-      database: "test",
+      server: process.env.SERVER,
+      database: process.env.DATABASE,
       user: process.env.USERNAME,
       password: process.env.PASSWORD,
+      options: {
+        enableArithAbort: true,
+        encrypt: true,
+        instanceName: `sqlexpress`,
+      },
     },
   }),
 });
