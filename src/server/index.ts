@@ -12,4 +12,10 @@ app.get("/api/files", async (req, res) => {
   res.end;
 });
 
+/* Route to prepare the helmut checkin
+ */
+app.get("/api/checkin", (req, res) => {
+  console.log(req.body);
+});
+
 app.listen(3002, () => console.log("Server started at port 3002"));

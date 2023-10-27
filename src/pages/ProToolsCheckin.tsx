@@ -124,7 +124,13 @@ export default function ProToolsCheckin() {
    * 3. Reloadet die Seite nach 5 Sekunden
    */
   const buttonHandler = () => {
-    console.log(projectData);
+    fetch(`api/checkin`, {
+      method: "POST",
+      body: JSON.stringify({ projectData }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
     nativeToast({
       message: "Der Job wird an das Helmut-Interface übergeben ...",
       position: "south-east",
