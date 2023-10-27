@@ -14,7 +14,7 @@ app.get("/api/files", async (req, res) => {
 
 /* Route to prepare the helmut checkin
  */
-app.get("/api/checkin", (req, res) => {
+app.post("/api/checkin", (req, res) => {
   console.log(req.body);
 });
 
