@@ -1,7 +1,8 @@
+
 import { promises as fs } from "fs";
 import path from "path";
 
-const proToolPath = "./ProTools";
+const proToolPath = "/mnt/d/ProTools";
 
 export const getAudioFiles = async () => {
   let audioFiles: { filePath: string; fileName: string }[] = [];

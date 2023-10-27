@@ -130,17 +130,32 @@ export default function ProToolsCheckin() {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-    });
-    nativeToast({
-      message: "Der Job wird an das Helmut-Interface übergeben ...",
-      position: "south-east",
-      // Self destroy in 5 seconds
-      timeout: 5000,
-      type: "info",
-    });
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      if (json.success) {
+        nativeToast({
+          message: `Der Job wurde mit der id ${json.message} an Helmut übergeben ...`,
+          position: "south-east",
+          // Self destroy in 5 seconds
+          timeout: 5000,
+          type: "success",
+        })
+      }
+        else {
+          nativeToast({
+            message: `Der Job ${json.message} konnte nicht in der Datenbank gefunden werden! Haben Sie ein Projekt ausgewählt?`,
+            position: "south-east",
+            // Self destroy in 5 seconds
+            timeout: 5000,
+            type: "error",
+          });
+        }
+      })
+  
     setTimeout(() => {
       location.reload();
-    }, 1000 * 5);
+    }, 1000 * 7);
   };
 
   /* helper Function
