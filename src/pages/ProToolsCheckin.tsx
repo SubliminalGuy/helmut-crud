@@ -97,7 +97,7 @@ export default function ProToolsCheckin() {
         <Select.Item
           className="SelectItem"
           key={el.filePath}
-          value={el.fileName}
+          value={el.filePath}
         >
           {el.fileName}
         </Select.Item>
