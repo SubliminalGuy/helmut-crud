@@ -95,12 +95,12 @@ export default function ProToolsCheckin() {
     (el: { filePath: string; fileName: string }) => {
       return (
         <Select.Item
-          asChild
           className="SelectItem"
           key={el.filePath}
           value={el.filePath}
         >
           {el.fileName}
+          
         </Select.Item>
       );
     }
@@ -142,6 +142,15 @@ export default function ProToolsCheckin() {
       location.reload();
     }, 1000 * 5);
   };
+
+  /* helper Function
+  * Shortens the displayed value to a name without path information
+  */
+  const shortenPathToName = (path: string) => {
+    const fileNameArray = path.split("/")
+    const fileName = fileNameArray[fileNameArray.length - 1]
+    return fileName
+  }
 
   return (
     <div className="headline-container">
@@ -187,7 +196,7 @@ export default function ProToolsCheckin() {
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
           <Select.Value placeholder="Audiospur 1+2">
-            {projectData.audioSpur1}
+            {shortenPathToName(projectData.audioSpur1)}
           </Select.Value>
           <Select.Icon className="SelectIcon">
             <ChevronDownIcon />
@@ -224,7 +233,7 @@ export default function ProToolsCheckin() {
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
           <Select.Value placeholder="Audiospur 3+4">
-            {projectData.audioSpur2}
+            {shortenPathToName(projectData.audioSpur1)}
           </Select.Value>
           <Select.Icon className="SelectIcon">
             <ChevronDownIcon />
