@@ -6,7 +6,7 @@ import {
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
 import { remult } from "remult";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { ProTools } from "../shared/ProTools";
 
@@ -39,6 +39,10 @@ export default function ProToolsCheckin() {
     createdDate: Date;
   }[];
 
+  /* React State Management für die Audiofile-Liste
+   */
+  const [audioFiles, setAudioFiles] = useState([]);
+
   /* React State Management für die Select-Elemente
    */
   const [projectData, setProjectData] = useState({
@@ -49,10 +53,31 @@ export default function ProToolsCheckin() {
 
   /* React State Management for the CheckIn Button
    */
-
   const [hasCheckedIn, setHasCheckedIn] = useState(false);
 
-  const selectElements = helmutProjects.map((project) => {
+  /* React State Variables for the ExitPopup that
+   * come form the useOutletContext of React Router 6
+   */
+
+  const [showExitPopup, setShowExitPopup] = useOutletContext() as [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>>
+  ];
+
+  /* Holt die List der Audiofiles vom Server
+   */
+
+  useEffect(() => {
+    fetch("/api/files")
+      .then((res) => res.json())
+      .then((data) => {
+        setAudioFiles(data);
+      });
+  }, []);
+
+  /* Erstellt die Select-Elemente aus den Projektdaten
+   */
+  const selectProjectElements = helmutProjects.map((project) => {
     return (
       <Select.Item
         className="SelectItem"
@@ -64,14 +89,21 @@ export default function ProToolsCheckin() {
     );
   });
 
-  /* State Variables for the ExitPopup that
-   * come form the useOutletContext of React Router 6
+  /* Erstellt die Select-Elemente aus der Audiofiles-Liste
    */
-
-  const [showExitPopup, setShowExitPopup] = useOutletContext() as [
-    boolean,
-    React.Dispatch<React.SetStateAction<boolean>>
-  ];
+  const selectAudioElements = audioFiles.map(
+    (el: { filePath: string; fileName: string }) => {
+      return (
+        <Select.Item
+          className="SelectItem"
+          key={el.filePath}
+          value={el.fileName}
+        >
+          {el.fileName}
+        </Select.Item>
+      );
+    }
+  );
 
   /* Ändert die Werte in projectData, wenn ein Select-Element verändert wird
    *  @param type: string - der Typ des Select-Elements, z.B. projectName
@@ -90,6 +122,11 @@ export default function ProToolsCheckin() {
   //   setSelectOpen(!selectOpen);
   // };
 
+  /* Funktion, die beim Click auf den CheckIn Button ausgeführt wird
+   * 1. Setzt den hasCheckedIn State auf true
+   * 2. Gibt eine nativeToast Nachricht aus
+   * 3. Reloadet die Seite nach 5 Sekunden
+   */
   const buttonHandler = () => {
     console.log(projectData);
     setHasCheckedIn(true);
@@ -134,7 +171,7 @@ export default function ProToolsCheckin() {
             <Select.Viewport className="SelectViewport">
               <Select.Group>
                 <Select.Label className="SelectLabel">Projects</Select.Label>
-                {selectElements}
+                {selectProjectElements}
               </Select.Group>
             </Select.Viewport>
             <Select.ScrollDownButton className="SelectScrollButton">
@@ -171,21 +208,7 @@ export default function ProToolsCheckin() {
                 <Select.Label className="SelectLabel">
                   Audiospur 1+2
                 </Select.Label>
-                <Select.Item className="SelectItem" value="schiesserei mix sf">
-                  schiesserei mix sf
-                </Select.Item>
-                <Select.Item className="SelectItem" value="autobahn mix sf">
-                  autobahn mix sf
-                </Select.Item>
-                <Select.Item className="SelectItem" value="fahrrad sf">
-                  fahrrad sf
-                </Select.Item>
-                <Select.Item className="SelectItem" value="landtag sf">
-                  landtag sf
-                </Select.Item>
-                <Select.Item className="SelectItem" value="sommer sf">
-                  sommer sf
-                </Select.Item>
+                {selectAudioElements}
               </Select.Group>
             </Select.Viewport>
             <Select.ScrollDownButton className="SelectScrollButton">
@@ -222,21 +245,7 @@ export default function ProToolsCheckin() {
                 <Select.Label className="SelectLabel">
                   Audiospur 3+4
                 </Select.Label>
-                <Select.Item className="SelectItem" value="schiesserei mix it">
-                  schiesserei mix it
-                </Select.Item>
-                <Select.Item className="SelectItem" value="autobahn mix it">
-                  autobahn mix it
-                </Select.Item>
-                <Select.Item className="SelectItem" value="fahrrad IT">
-                  fahrrad IT
-                </Select.Item>
-                <Select.Item className="SelectItem" value="landtag M&E">
-                  landtag M&E
-                </Select.Item>
-                <Select.Item className="SelectItem" value="sommer IT">
-                  sommer it
-                </Select.Item>
+                {selectAudioElements}
               </Select.Group>
             </Select.Viewport>
             <Select.ScrollDownButton className="SelectScrollButton">
