@@ -19,7 +19,6 @@ export const api = remultExpress({
       options: {
         enableArithAbort: true,
         encrypt: true,
-        instanceName: `sqlexpress`,
       },
     },
   }),
