@@ -77,14 +77,7 @@ export default function ProToolsCheckin() {
       });
   }, []);
 
-  /* React State Variables for the ExitPopup that
-   * come form the useOutletContext of React Router 6
-   */
-
-  const [showExitPopup, setShowExitPopup] = useOutletContext() as [
-    boolean,
-    React.Dispatch<React.SetStateAction<boolean>>
-  ];
+  
   /* Erstellt die Select-Elemente aus den Projektdaten
    */
   const selectProjectElements = helmutProjects.map((project) => {
