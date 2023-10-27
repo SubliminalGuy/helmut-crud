@@ -14,6 +14,7 @@ dist-ssr
 .env
 db
 ProTools
+dummy-helmut-body.json
 
 # Editor directories and files
 .vscode/*
