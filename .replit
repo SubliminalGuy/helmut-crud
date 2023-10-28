@@ -1,6 +1,5 @@
 run = "npm run dev"
 hidden = [".build", ".config"]
-entrypoint = "index.ts"
 
 [packager]
 language = "nodejs"
@@ -26,8 +25,3 @@ start = "typescript-language-server --stdio"
 
 [deployment]
 run = ["sh", "-c", "npm run dev"]
-
-[env]
-XDG_CONFIG_HOME = "$REPL_HOME/.config"
-PATH = "$REPL_HOME/node_modules/.bin:$REPL_HOME/.config/npm/node_global/bin"
-npm_config_prefix = "$REPL_HOME/.config/npm/node_global"

@@ -1,5 +1,6 @@
 import * as Select from "@radix-ui/react-select";
 import { useLoaderData, useOutletContext } from "react-router-dom";
+
 import {
   CheckIcon,
   ChevronDownIcon,
@@ -100,7 +101,6 @@ export default function ProToolsCheckin() {
           value={el.filePath}
         >
           {el.fileName}
-          
         </Select.Item>
       );
     }
@@ -118,45 +118,61 @@ export default function ProToolsCheckin() {
       };
     });
   };
-
-  // const handleOpenSelect = () => {
-  //   setSelectOpen(!selectOpen);
-  // };
-
   /* Funktion, die beim Click auf den CheckIn Button ausgeführt wird
    * 1. Setzt den hasCheckedIn State auf true
    * 2. Gibt eine nativeToast Nachricht aus
    * 3. Reloadet die Seite nach 5 Sekunden
    */
   const buttonHandler = () => {
-    console.log(projectData);
-    setHasCheckedIn(true);
-    nativeToast({
-      message: "Der Job wird an das Helmut-Interface übergeben ...",
-      position: "south-east",
-      // Self destroy in 5 seconds
-      timeout: 5000,
-      type: "info",
-    });
+    fetch(`api/checkin`, {
+      method: "POST",
+      body: JSON.stringify({ projectData }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      if (json.success) {
+        nativeToast({
+          message: `Der Job wurde mit der id ${json.message} an Helmut übergeben ...`,
+          position: "south-east",
+          // Self destroy in 5 seconds
+          timeout: 5000,
+          type: "success",
+        })
+      }
+        else {
+          nativeToast({
+            message: `Der Job ${json.message} konnte nicht in der Datenbank gefunden werden! Haben Sie ein Projekt ausgewählt?`,
+            position: "south-east",
+            // Self destroy in 5 seconds
+            timeout: 5000,
+            type: "error",
+          });
+        }
+      })
+  
     setTimeout(() => {
       location.reload();
-    }, 1000 * 5);
+    }, 1000 * 7);
   };
 
   /* helper Function
-  * Shortens the displayed value to a name without path information
-  */
+   * Shortens the displayed value to a name without path information
+   */
   const shortenPathToName = (path: string) => {
-    const fileNameArray = path.split("/")
-    const fileName = fileNameArray[fileNameArray.length - 1]
-    return fileName
-  }
+    const fileNameArray = path.split("/");
+    const fileName = fileNameArray[fileNameArray.length - 1];
+    return fileName;
+  };
 
   return (
     <div className="headline-container">
       <h1 className="headline-container-h1">CheckIn ProTools</h1>
       <Select.Root
         // onOpenChange={() => handleOpenSelect()}
+
         onValueChange={(name: string) => handleValueChange("projectName", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -191,7 +207,6 @@ export default function ProToolsCheckin() {
         </Select.Portal>
       </Select.Root>
       <Select.Root
-        //onOpenChange={() => handleOpenSelect()}
         onValueChange={(name: string) => handleValueChange("audioSpur1", name)}
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
@@ -264,10 +279,7 @@ export default function ProToolsCheckin() {
           </Select.Content>
         </Select.Portal>
       </Select.Root>
-      <button
-        /* disabled={selectOpen} */ className="Button"
-        onClick={buttonHandler}
-      >
+      <button className="Button" onClick={buttonHandler}>
         Einchecken
       </button>
       <div
