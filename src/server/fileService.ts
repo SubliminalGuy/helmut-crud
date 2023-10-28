@@ -1,8 +1,9 @@
-
 import { promises as fs } from "fs";
 import path from "path";
 
-const proToolPath = "/mnt/d/ProTools";
+require("dotenv").config();
+
+const proToolPath = process.env.PROTOOLPATH as string;
 
 export const getAudioFiles = async () => {
   let audioFiles: { filePath: string; fileName: string }[] = [];
