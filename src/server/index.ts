@@ -8,7 +8,7 @@ import  fs  from "fs";
 require("dotenv").config();
 
 const proToolsMountPath = process.env.PROTOOLS_MOUNT
-const proToolsRealPath = "\\\\sp-fbpkons-istb01\\Transfer\\CNC\\Helmut\\Helmut4\\Helmut_IN\\ProTools"
+const proToolsRealPath = ""
 
 const app = express();
 app.use(api);
