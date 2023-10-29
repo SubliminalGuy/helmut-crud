@@ -248,7 +248,7 @@ export default function ProToolsCheckin() {
       >
         <Select.Trigger className="SelectTrigger" aria-label="Food">
           <Select.Value placeholder="Audiospur 3+4">
-            {shortenPathToName(projectData.audioSpur1)}
+            {shortenPathToName(projectData.audioSpur2)}
           </Select.Value>
           <Select.Icon className="SelectIcon">
             <ChevronDownIcon />
