@@ -15,6 +15,8 @@ dist-ssr
 db
 ProTools
 dummy-helmut-body.json
+vite.config.ts
+
 
 # Editor directories and files
 .vscode/*
@@ -26,3 +28,5 @@ dummy-helmut-body.json
 *.njsproj
 *.sln
 *.sw?
+src/server/api.ts
+
