@@ -14,18 +14,18 @@ Funktioniert nur mit installierter MariaDB oder MSSQL-Datenbank wie in /src/serv
 
 Folgende env-Variablen müssen in ein .env-File hinterlegt werden
 
-SERVER="Host bzw. Instanzname der Datenbank"
-DATABASE="database_name"
-USERNAME="database_user_name"
-PASSWORD="database_pwd"
+SERVER="Host bzw. Instanzname der Datenbank"  
+DATABASE="database_name"  
+USERNAME="database_user_name"  
+PASSWORD="database_pwd"  
 
-Die restlichen env-Variablen machen nur im Kontext der vorhandenen Helmut4-Installation Sinn:
+Die restlichen env-Variablen machen nur im Kontext der vorhandenen Helmut4-Installation Sinn: 
 
-*URL unter der Helmut Jobs über die Helmut-API angelegt werden können*
-HELMUT_OUTBOUND_URL="helmutUrl"
-*Der Bearer-Token für die Helmut-API*
-HELMUT_BEARER_TOKEN="helmutJwtToken"
-*Der Pfad für die ProTools-Files wie er in der VM bzw. im Container gemountet ist.*
-PROTOOLS_MOUNT="pathtoprotoolsfromContainer"
-*Der Pfad für die ProTools-File auf dem Helmut-Filesystem*
-PROTOOLS_PATH="pathtoprotoolsfromFileSystem"
+*URL unter der Helmut Jobs über die Helmut-API angelegt werden können*  
+HELMUT_OUTBOUND_URL="helmutUrl"  
+*Der Bearer-Token für die Helmut-API*  
+HELMUT_BEARER_TOKEN="helmutJwtToken"  
+*Der Pfad für die ProTools-Files wie er in der VM bzw. im Container gemountet ist.*  
+PROTOOLS_MOUNT="pathtoprotoolsfromContainer"  
+*Der Pfad für die ProTools-File auf dem Helmut-Filesystem*  
+PROTOOLS_PATH="pathtoprotoolsfromFileSystem"  
