@@ -1,14 +1,14 @@
 # GUI und Express-API für den Protools-Workflow
 
 **Lokale Installation**
-git clone REPOSITORY_URL
-npm install
-*Starten der Web-GUI auf PORT:5173*
-npm run dev
-*Starten der Express-API auf PORT:3002*
-npm run dev-node
+git clone REPOSITORY_URL  
+npm install  
+*Starten der Web-GUI auf PORT:5173*  
+npm run dev  
+*Starten der Express-API auf PORT:3002*  
+npm run dev-node  
 
-Funktioniert nur mit installierte MariaDB oder MSSQL-Datenbank wie in /src/server/api.ts spezifiziert.
+Funktioniert nur mit installierter MariaDB oder MSSQL-Datenbank wie in /src/server/api.ts spezifiziert.
 
 **Environment Variablen**
 
