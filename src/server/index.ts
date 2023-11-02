@@ -8,7 +8,7 @@ import  fs  from "fs";
 require("dotenv").config();
 
 const proToolsMountPath = process.env.PROTOOLS_MOUNT
-const proToolsRealPath = ""
+const proToolsRealPath = process.env.PROTOOLS_PATH
 
 const app = express();
 app.use(api);
