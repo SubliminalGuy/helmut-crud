@@ -3,7 +3,7 @@ import { api } from "./api";
 import { getAudioFiles } from "./fileService";
 import { remult } from "remult"
 import { ProTools } from "../shared/ProTools";
-import dummyjson from "../../dummy-helmut-body.json"
+import dummyjson from "../dummy-helmut-body.json"
 import  fs  from "fs";
 require("dotenv").config();
 
