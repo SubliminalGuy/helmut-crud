@@ -3,7 +3,8 @@ import path from "path";
 
 require("dotenv").config();
 
-const proToolPath = process.env.PROTOOLPATH as string;
+const proToolsPath = process.env.PROTOOLS_MOUNT as string;
+
 
 export const getAudioFiles = async () => {
   let audioFiles: { filePath: string; fileName: string }[] = [];
@@ -24,7 +25,7 @@ export const getAudioFiles = async () => {
       }
     }
   };
-  await findFiles(proToolPath);
+  await findFiles(proToolsPath);
   return audioFiles;
 };
 
