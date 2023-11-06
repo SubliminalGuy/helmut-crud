@@ -12,7 +12,7 @@ export const api = remultExpress({
   dataProvider: createKnexDataProvider({
     client: "mysql2",
     connection: {
-      host: "127.0.0.1",
+      host: "mdb",
       port: 3306,
       database: "test",
       user: process.env.USERNAME,
