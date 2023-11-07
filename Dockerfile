@@ -9,6 +9,8 @@ RUN npm install
 # Copy the current directory contents into the container at /app
 COPY . .
 
+RUN mkdir ./protools
+
 RUN npm run build
 
 EXPOSE 3002
